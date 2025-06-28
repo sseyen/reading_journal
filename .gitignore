@@ -1,0 +1,5 @@
+.vscode
+db/
+data/
+*.o
+reading_journal
