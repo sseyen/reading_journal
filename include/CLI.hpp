@@ -17,6 +17,8 @@ private:
     void cmdList() const;
     void cmdSearchAuthor() const;
     void cmdSearchTitle()  const;
+    void cmdDelete();
+    void cmdCountByAuthor();
 
     static std::optional<int> readInt(const char* prompt);
 };

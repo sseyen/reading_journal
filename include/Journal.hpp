@@ -17,6 +17,8 @@ public:
     std::vector<Book> findByAuthor(const std::string& author) const;
     std::vector<Book> findByTitle (const std::string& title)  const;
     std::vector<Book> books() const;
+    void deleteBook(const std::string& title);
+    // int countByAuthor(const std::vector<Book>& b) const;
 
 private:
     void ensureSchema();

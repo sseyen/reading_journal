@@ -84,3 +84,21 @@ std::vector<Book> Journal::findByTitle(const std::string& t) const {
     sqlite3_finalize(stmt);
     return res;
 }
+
+void Journal::deleteBook(const std::string& title) {
+    const char* kDelete = "DELETE FROM books WHERE title=?;";
+    sqlite3_stmt* stmt;
+    sqlite3_prepare_v2(m_db, kDelete, -1, &stmt, nullptr);
+    sqlite3_bind_text(stmt, 1, title.c_str(), -1, SQLITE_TRANSIENT);
+    sqlite3_step(stmt);
+    sqlite3_finalize(stmt);
+}
+
+// int Journal::countByAuthor(const std::vector<Book>& b) const {
+//     int counter = 0;
+
+//     for (Book book : b)
+//         counter++;
+//     return counter;
+// }
+

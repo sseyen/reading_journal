@@ -54,6 +54,18 @@ void CLI::cmdSearchTitle() const {
         std::cout << b.author() << " (" << b.year() << ")\n";
 }
 
+void CLI::cmdDelete() {
+    std::string title = ask("Title: ");
+    m_journal.deleteBook(title);
+    std::cout << "Book deleted!\n";
+}
+
+void CLI::cmdCountByAuthor()
+{
+    std::string author = ask("Author: ");
+    auto res = m_journal.findByAuthor(author);
+    std::cout << "Author has " << res.size() << " books." << "\n";
+}
 
 void CLI::showMenu() const {
     std::cout << "\n==== Reading Journal ====\n"
@@ -61,6 +73,8 @@ void CLI::showMenu() const {
               << "2. List all\n"
               << "3. Search by author\n"
               << "4. Search by title\n"
+              << "5. Delete book\n"
+              << "6. Number of Author's books\n"
               << "0. Exit\n> ";
 }
 
@@ -97,6 +111,8 @@ void CLI::run() {
             case 2: cmdList(); break;
             case 3: cmdSearchAuthor(); break;
             case 4: cmdSearchTitle(); break;
+            case 5: cmdDelete(); break;
+            case 6: cmdCountByAuthor(); break;
             case 0: return;
             default: std::cout << "Unknown option\n";
         }
